@@ -1,0 +1,13 @@
+.plusButton {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+}
+
+textarea {
+  border: none;
+  outline: none;
+}
+
+
