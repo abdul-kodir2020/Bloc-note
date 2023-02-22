@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import ListeNote from './listeNote';
 import NoteBlock from './NoteBlock';
+import Alert from './Alert';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,21 +10,42 @@ class App extends React.Component {
     this.state = {
       listeNote: [],
       listeNoteBlock: [],
+      content: false,
     };
     this.addNote = this.addNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
     this.showNote = this.showNote.bind(this);
     this.closeNote = this.closeNote.bind(this);
     this.updateText = this.updateText.bind(this);
+    this.hide = this.hide.bind(this);
   }
 
   addNote() {
-    const newNote = {
-      id: Math.floor(Math.random() * 10000),
-      text: '',
-    };
-    const newListe = [newNote, ...this.state.listeNote];
-    this.setState({ listeNote: newListe });
+    if (this.state.listeNote.length == 0) {
+      console.log('existe');
+      const newNote = {
+        id: Math.floor(Math.random() * 10000),
+        text: '',
+      };
+      const newListe = [newNote, ...this.state.listeNote];
+      this.setState({ listeNote: newListe });
+    } else {
+      if (this.state.listeNote[this.state.listeNote.length - 1].text != '') {
+        console.log('existe pas et pas vide');
+
+        const newNote = {
+          id: Math.floor(Math.random() * 10000),
+          text: '',
+        };
+        const newListe = [newNote, ...this.state.listeNote];
+        this.setState({ listeNote: newListe });
+      } else {
+        this.setState({ content: true });
+        const timer = setTimeout(() => {
+          this.setState({ content: false });
+        }, 2000);
+      }
+    }
   }
 
   deleteNote(e) {
@@ -68,12 +90,11 @@ class App extends React.Component {
           (note) =>
             String(note.key) !== e.target.parentElement.parentElement.name
         );
-    
 
     this.setState({ listeNoteBlock: newListe });
-    
-    console.log(newListe)
-    console.log(e.target)
+
+    console.log(newListe);
+    console.log(e.target);
   }
 
   updateText(e) {
@@ -82,6 +103,11 @@ class App extends React.Component {
     this.setState({ listeNoteBlock: liste });
     console.log(e.target.value);
     console.log(liste[parseInt(e.target.name)].content.text);
+  }
+
+  hide() {
+    this.setState({ content: false });
+    console.log('rd');
   }
 
   render() {
@@ -104,6 +130,7 @@ class App extends React.Component {
             />
           </div>
         </div>
+        <Alert content={this.state.content} hide={this.hide} />
       </div>
     );
   }
