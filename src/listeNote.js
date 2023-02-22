@@ -8,8 +8,9 @@ class ListeNote extends React.Component {
   }
 
   render() {
+    console.log(this.props.listeNoteBlock.length)
     return (
-      <div class="w-50 listeNote bg-secondary-subtle border border-dark-subtle rounded">
+      <div class={"listeNote bg-secondary-subtle border border-dark-subtle rounded liste "+((this.props.listeNoteBlock.length == 0)?"w-100":"w-50")}>
         <div class="w-100 bg-dark rounded text-white p-2 d-flex justify-content-between">
           <span>Liste des notes</span>
           <button class="plusButton text-white" onClick={this.props.addNote}>

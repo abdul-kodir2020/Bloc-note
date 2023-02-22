@@ -10,4 +10,8 @@ textarea {
   outline: none;
 }
 
+.liste, .sectionNote{
+  transition: all 1s ease;
+}
+
 

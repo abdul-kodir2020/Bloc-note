@@ -30,7 +30,7 @@ class App extends React.Component {
       const newListe = [newNote, ...this.state.listeNote];
       this.setState({ listeNote: newListe });
     } else {
-      if (this.state.listeNote[this.state.listeNote.length - 1].text != '') {
+      if (this.state.listeNote[0].text != '') {
         console.log('existe pas et pas vide');
 
         const newNote = {
@@ -61,6 +61,8 @@ class App extends React.Component {
 
     console.log(newListe);
     this.setState({ listeNote: newListe });
+    this.setState({ listeNoteBlock: [] });
+
   }
 
   showNote(e) {
@@ -76,9 +78,12 @@ class App extends React.Component {
               parseInt(e.target.parentElement.parentElement.name)
             ],
         };
-
-    const newListe = [newNote, ...this.state.listeNoteBlock];
+    
+    const newListe = [newNote];
     this.setState({ listeNoteBlock: newListe });
+    console.log(newNote);
+
+    console.log(this.state.listeNoteBlock);
   }
 
   closeNote(e) {
@@ -107,7 +112,6 @@ class App extends React.Component {
 
   hide() {
     this.setState({ content: false });
-    console.log('rd');
   }
 
   render() {
@@ -122,7 +126,7 @@ class App extends React.Component {
             listeNoteBlock={this.state.listeNoteBlock}
             showNote={this.showNote}
           />
-          <div class="w-50 sectionNote px-2">
+          <div class={"w-50 sectionNote px-2 "+((this.state.listeNoteBlock.length == 0)?"d-none":"")}>
             <NoteBlock
               listeNoteBlock={this.state.listeNoteBlock}
               closeNote={this.closeNote}

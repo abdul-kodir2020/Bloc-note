@@ -14,7 +14,7 @@ class NoteBlock extends React.Component {
     return this.props.listeNoteBlock.map((element, i) => (
       <div class="w-100 listeNote bg-secondary-subtle border border-dark-subtle rounded">
         <div class="w-100 bg-dark rounded text-white p-2 d-flex justify-content-between">
-          <span>Note {parseInt(element.key) + 1}</span>
+          <span></span>
           <div class="d-flex justify-content-between divButton">
             <button class="plusButton p-0 text-white">
               <BsThreeDots size={20} />
@@ -29,7 +29,7 @@ class NoteBlock extends React.Component {
           </div>
         </div>
         <div>
-          <textarea class="w-100" name={i} id="" rows="10" value={element.content.text} onChange={this.props.updateText}>
+          <textarea class="w-100" name={i} id="" rows="7" value={element.content.text} onChange={this.props.updateText}>
             {element.content.text}
           </textarea>
         </div>

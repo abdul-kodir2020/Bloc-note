@@ -5,7 +5,6 @@ class Alert extends React.Component {
     super(props);
   }
   componentDidMount() {
-    console.log('rd')
 
     const timer = setTimeout(() => {
       this.props.hide;
