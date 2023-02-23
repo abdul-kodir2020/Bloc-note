@@ -101,9 +101,9 @@ function BlocNote() {
   };
 
   return (
-    <div class="container w-100">
+    <div class="container w-100 pt-4">
       <h1 class="text-center">Bloc note</h1>
-      <div class="mt-5 w-100 d-flex">
+      <div class="mt-4 w-100 d-flex">
         <ListeNote
           listeNote={listeNote}
           addNote={addNote}

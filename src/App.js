@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Header />
-      <div>
+      <div className="corps w-100">
         <Routes>
           <Route path="/bloc-note" element={<BlocNote />} />
         </Routes>

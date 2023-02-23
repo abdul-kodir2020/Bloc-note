@@ -10,8 +10,15 @@ textarea {
   outline: none;
 }
 
-.liste, .sectionNote{
+.liste,
+.sectionNote {
   transition: all 1s ease;
 }
 
-
+.corps {
+  background-color: #cd8b62;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+}
